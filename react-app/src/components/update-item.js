@@ -1,11 +1,10 @@
-import React from 'react';
+import React from "react";
 
 class UpdateItemForm extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      item: this.props.item
+      item: this.props.item,
     };
   }
 
@@ -15,18 +14,25 @@ class UpdateItemForm extends React.Component {
     const item = this.state.item;
     item[field] = value;
     this.setState(item);
-  }
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.handleUpdate(this.state.item)
-  }
+    this.props.handleUpdate(this.state.item);
+  };
 
   render() {
-
     return (
-      <form data-testid={`update-form-${this.props.item.name}`} onSubmit={this.handleChange}>
-        <input data-testid={`update-field-${this.props.item.name}`} name="notes" placeholder="Add Notes" onChange={this.handleChange} />
+      <form
+        data-testid={`update-form-${this.props.item.name}`}
+        onSubmit={this.handleSubmit}
+      >
+        <input
+          data-testid={`update-field-${this.props.item.name}`}
+          name="notes"
+          placeholder="Add Notes"
+          onChange={this.handleChange} //idk?
+        />
         <button type="submit">Update Item</button>
       </form>
     );

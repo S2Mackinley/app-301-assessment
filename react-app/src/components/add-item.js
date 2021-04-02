@@ -1,13 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import {Form, Button} from 'react-bootstrap';
+import { Form, Button } from "react-bootstrap";
 
 export class AddNewItem extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      formData: {}
+      formData: {},
     };
   }
 
@@ -16,25 +15,36 @@ export class AddNewItem extends React.Component {
     const value = e.target.value;
     const formData = this.state.formData;
     formData[field] = value;
-    this.setState({formData});
-  }
+    this.setState({ field });// changed from form data to field
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.handleAddItem(this.state.formData)
-  }
+    this.props.handleAddItem(this.state.formData);
+  };
 
   render() {
-
     return (
       <Form data-testid="add-form" onSubmit={this.handleSubmit}>
         <Form.Group>
           <Form.Label>Item</Form.Label>
-          <Form.Control type="text" placeholder="Enter email" data-testid="add-form-name" name="name" onChange={this.handleChange} />
+          <Form.Control
+            type="text"
+            placeholder="Enter an item"
+            data-testid="add-form-name"
+            name="name"
+            onChange={this.handleChange}
+          />
         </Form.Group>
         <Form.Group>
           <Form.Label>Description</Form.Label>
-          <Form.Control type="text" placeholder="Description" data-testid="add-form-description" name="description" onChange={this.handleChange} />
+          <Form.Control
+            type="text"
+            placeholder="Description"
+            data-testid="add-form-description"
+            name="description"
+            onChange={this.handleChange}
+          />
         </Form.Group>
         <Button variant="primary" type="submit">
           Add Item
@@ -43,3 +53,5 @@ export class AddNewItem extends React.Component {
     );
   }
 }
+
+export default AddNewItem;
