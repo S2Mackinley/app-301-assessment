@@ -15,7 +15,7 @@ export class AddNewItem extends React.Component {
     const value = e.target.value;
     const formData = this.state.formData;
     formData[field] = value;
-    this.setState({ field });// changed from form data to field
+    this.setState({ formData });
   };
 
   handleSubmit = (e) => {
@@ -25,31 +25,33 @@ export class AddNewItem extends React.Component {
 
   render() {
     return (
-      <Form data-testid="add-form" onSubmit={this.handleSubmit}>
-        <Form.Group>
-          <Form.Label>Item</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter an item"
-            data-testid="add-form-name"
-            name="name"
-            onChange={this.handleChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Description</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Description"
-            data-testid="add-form-description"
-            name="description"
-            onChange={this.handleChange}
-          />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Add Item
-        </Button>
-      </Form>
+      <>
+        <Form data-testid="add-form" onSubmit={this.handleSubmit}>
+          <Form.Group>
+            <Form.Label>Item</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter an item"
+              data-testid="add-form-name"
+              name="name"
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Description</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Description"
+              data-testid="add-form-description"
+              name="description"
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Add Item
+          </Button>
+        </Form>
+      </>
     );
   }
 }

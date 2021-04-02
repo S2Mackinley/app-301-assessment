@@ -23,6 +23,7 @@ class UpdateItemForm extends React.Component {
 
   render() {
     return (
+      <>
       <form
         data-testid={`update-form-${this.props.item.name}`}
         onSubmit={this.handleSubmit}
@@ -35,6 +36,7 @@ class UpdateItemForm extends React.Component {
         />
         <button type="submit">Update Item</button>
       </form>
+      </>
     );
   }
 }

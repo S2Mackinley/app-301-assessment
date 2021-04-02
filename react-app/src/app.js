@@ -15,7 +15,7 @@ class App extends React.Component {
       items: [],
     };
   }
-
+  // (`${`http://localhost:3001/items/${id}`});
   addItem = async (item) => {
     await axios.post(`${API_SERVER}/items`, item);
     this.getItems();
@@ -40,13 +40,13 @@ class App extends React.Component {
   async componentDidMount() {
     await this.getItems();
   }
-  //added handleUpdate={this.updateItem}
+
   render() {
     return (
       <div>
         <Navbar bg="light">
           <Container>
-            <h1>Our Items</h1>
+            <Navbar.Brand href="#">Our Items</Navbar.Brand>
           </Container>
         </Navbar>
         <Form handleAddItem={this.addItem} />
@@ -54,9 +54,8 @@ class App extends React.Component {
         <Items
           handleDelete={this.deleteItem}
           itemsList={this.state.items}
-          handleUpdate={this.updateItem}
-        />{" "}
-        adde
+          handleUpdate={this.updateItem} //added
+        />
       </div>
     );
   }
