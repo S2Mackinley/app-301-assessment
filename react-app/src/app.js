@@ -6,7 +6,7 @@ import Form from "./components/add-item.js";
 import Items from "./components/items.js";
 import { Container, Navbar } from "react-bootstrap";
 
-const API_SERVER = process.env.REACT_APP_API;
+// const API_SERVER = process.env.REACT_APP_API;
 
 class App extends React.Component {
   constructor(props) {
@@ -15,24 +15,24 @@ class App extends React.Component {
       items: [],
     };
   }
-  // (`${`http://localhost:3001/items/${id}`});
+
   addItem = async (item) => {
-    await axios.post(`${API_SERVER}/items`, item);
+    await axios.post(`http://localhost:3001/items`, item);
     this.getItems();
   };
 
   deleteItem = async (id) => {
-    await axios.delete(`${API_SERVER}/items/${id}`);
+    await axios.delete(`http://localhost:3001/items/${id}`);
     this.getItems();
   };
 
   updateItem = async (item) => {
-    await axios.put(`${API_SERVER}/items/${item._id}`, item);
+    await axios.put(`http://localhost:3001//items/${item._id}`, item);
     this.getItems();
   };
 
   getItems = async () => {
-    const response = await axios.get(`${API_SERVER}/items`);
+    const response = await axios.get(`http://localhost:3001/items`);
     const items = response.data;
     this.setState({ items });
   };
